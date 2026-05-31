@@ -1,0 +1,14 @@
+node_modules/
+
+dist/
+out/
+build/
+
+*.log
+npm-debug.log*
+
+vault.txt
+.env
+
+.DS_Store
+Thumbs.db

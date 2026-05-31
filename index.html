@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="lt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slaptažodžių tvarkyklė</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <main class="app-shell">
+      <header class="app-header">
+        <p class="eyebrow">AES-256-GCM saugykla</p>
+        <h1>Slaptažodžių tvarkyklė</h1>
+        <p class="subtitle">
+          Saugokite įrašus užšifruotame vietiniame faile. Slaptažodžiai
+          rodomi tik pareikalavus.
+        </p>
+      </header>
+
+      <section class="card vault-card">
+        <div class="section-heading">
+          <h2>Saugykla</h2>
+          <p>Įveskite pagrindinį slaptažodį, tada įkelkite arba išsaugokite saugyklą.</p>
+        </div>
+
+        <div class="vault-layout">
+          <div class="form-group">
+            <label for="masterPassword">Pagrindinis slaptažodis</label>
+            <input
+              type="password"
+              id="masterPassword"
+              placeholder="Įveskite pagrindinį slaptažodį"
+              required
+            />
+          </div>
+
+          <div class="button-row">
+            <button type="button" id="loadVaultButton" class="secondary-button">
+              Įkelti saugyklą
+            </button>
+            <button type="button" id="saveFileButton">
+              Išsaugoti saugyklą
+            </button>
+          </div>
+        </div>
+
+        <p id="statusMessage" class="status-message">
+          Saugykla dar neįkelta.
+        </p>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <h2>Naujas įrašas</h2>
+          <p>Įveskite paskyros duomenis. Slaptažodis bus užšifruotas prieš saugojimą.</p>
+        </div>
+
+        <form id="entryForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="title">Pavadinimas</label>
+              <input type="text" id="title" placeholder="Pvz., Gmail" required />
+            </div>
+
+            <div class="form-group">
+              <label for="password">Slaptažodis</label>
+              <input
+                type="password"
+                id="password"
+                placeholder="Įveskite slaptažodį"
+                required
+              />
+            </div>
+
+            <div class="form-group full-width">
+              <label for="url">URL arba programos pavadinimas</label>
+              <input type="text" id="url" placeholder="Pvz., https://gmail.com" />
+            </div>
+
+            <div class="form-group full-width">
+              <label for="notes">Pastabos</label>
+              <textarea
+                id="notes"
+                rows="3"
+                placeholder="Papildoma informacija"
+              ></textarea>
+            </div>
+          </div>
+
+          <button type="submit" id="addButton" class="primary-action">Pridėti</button>
+        </form>
+      </section>
+
+      <section class="card records-card">
+        <div class="records-header">
+          <div class="section-heading">
+            <h2>Išsaugoti įrašai</h2>
+            <p>Paieška vyksta pagal pavadinimą. Slaptažodis lentelėje nerodomas.</p>
+          </div>
+
+          <div class="form-group search-box">
+            <label for="searchInput">Paieška</label>
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Ieškoti pagal pavadinimą"
+            />
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table id="recordsTable">
+            <thead>
+              <tr>
+                <th>Pavadinimas</th>
+                <th>URL / Programa</th>
+                <th>Pastabos</th>
+                <th>Veiksmai</th>
+              </tr>
+            </thead>
+
+            <tbody id="recordsBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>
